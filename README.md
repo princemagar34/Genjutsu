@@ -382,13 +382,6 @@ const GMAIL_CONFIG = {
 4. Generate context-aware responses
 5. Maintain conversation logs
 
-## 📚 Resources
-
-### Documentation
-- [Gmail API Documentation](https://developers.google.com/gmail/api)
-- [OAuth 2.0 Guide](https://oauth.net/2/)
-- [Chart.js Docs](https://www.chartjs.org/docs/)
-- [Font Awesome Icons](https://fontawesome.com/icons)
 
 ### Learning Materials
 - Phishing detection techniques
@@ -404,43 +397,4 @@ This is a student project for Islington College. Contributions, suggestions, and
 
 Educational Project - London Metropolitan University / Islington College
 
-## 👤 Author
 
-**Prince Paija Magar**
-- Student ID: 23047374
-- Email: prince@gmail.com
-- College: Islington College
-- Supervisor: Ayush Bhakta Pradhanang, Aman Thakur
-
-## 🙏 Acknowledgments
-
-- Ayush Bhakta Pradhanang (Internal Supervisor)
-- Aman Thakur (External Supervisor)
-- Islington College
-- London Metropolitan University
-
----
-
-## 🚀 Quick Start Commands
-
-```bash
-# For local development server (optional)
-python -m http.server 8000
-
-# Or with Node.js
-npx http-server
-
-# Then open: http://localhost:8000
-```
-
-## 📞 Support
-
-For questions or issues:
-1. Check the documentation
-2. Review the code comments
-3. Contact supervisors
-4. Refer to Gmail API docs
-
----
-
-**Note**: This is a UI prototype/demo. Full functionality requires backend implementation, Gmail API integration, and ML model deployment as outlined in the project proposal.
