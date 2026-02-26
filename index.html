@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genjutsu - Gmail Security System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fas fa-shield-alt"></i>
+            <h2>Genjutsu</h2>
+        </div>
+        <nav class="nav-menu">
+            <a href="#dashboard" class="nav-item active" data-page="dashboard">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#emails" class="nav-item" data-page="emails">
+                <i class="fas fa-envelope"></i>
+                <span>Email Monitoring</span>
+            </a>
+            <a href="#threats" class="nav-item" data-page="threats">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span>Threats Detected</span>
+            </a>
+            <a href="#honeypot" class="nav-item" data-page="honeypot">
+                <i class="fas fa-bug"></i>
+                <span>Honeypot Mode</span>
+            </a>
+            <a href="#settings" class="nav-item" data-page="settings">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="user-avatar">PM</div>
+                <div class="user-info">
+                    <p class="user-name">Prince Magar</p>
+                    <p class="user-email">prince@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 class="page-title">Dashboard</h1>
+            </div>
+            <div class="header-right">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search emails...">
+                </div>
+                <button class="notification-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Dashboard Page -->
+        <section id="dashboard-page" class="page-content active">
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Total Emails</h3>
+                        <p class="stat-number">1,247</p>
+                        <span class="stat-change positive">+12% from last week</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon red">
+                        <i class="fas fa-exclamation-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Threats Blocked</h3>
+                        <p class="stat-number">89</p>
+                        <span class="stat-change positive">+5 today</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Safe Emails</h3>
+                        <p class="stat-number">1,158</p>
+                        <span class="stat-change">92.9% safe rate</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        <i class="fas fa-spider"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Honeypot Active</h3>
+                        <p class="stat-number">4</p>
+                        <span class="stat-change">Scammers engaged</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <div class="card-header">
+                        <h3>Threat Detection Over Time</h3>
+                        <select class="time-filter">
+                            <option>Last 7 Days</option>
+                            <option>Last 30 Days</option>
+                            <option>Last 3 Months</option>
+                        </select>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="threatChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <div class="card-header">
+                        <h3>Threat Types Distribution</h3>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="pieChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Threats -->
+            <div class="recent-threats">
+                <div class="card-header">
+                    <h3>Recent Threats Detected</h3>
+                    <a href="#threats" class="view-all">View All</a>
+                </div>
+                <div class="threats-list">
+                    <div class="threat-item high">
+                        <div class="threat-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="threat-details">
+                            <h4>Phishing Attempt - Banking Scam</h4>
+                            <p>From: secure-banking@fakmail.com</p>
+                            <span class="threat-time">2 minutes ago</span>
+                        </div>
+                        <span class="threat-badge high">High Risk</span>
+                    </div>
+                    <div class="threat-item medium">
+                        <div class="threat-icon">
+                            <i class="fas fa-exclamation-circle"></i>
+                        </div>
+                        <div class="threat-details">
+                            <h4>Suspicious Link Detected</h4>
+                            <p>From: noreply@service-update.xyz</p>
+                            <span class="threat-time">15 minutes ago</span>
+                        </div>
+                        <span class="threat-badge medium">Medium Risk</span>
+                    </div>
+                    <div class="threat-item low">
+                        <div class="threat-icon">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="threat-details">
+                            <h4>Spoofed Sender Address</h4>
+                            <p>From: admin@company-verify.com</p>
+                            <span class="threat-time">1 hour ago</span>
+                        </div>
+                        <span class="threat-badge low">Low Risk</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Email Monitoring Page -->
+        <section id="emails-page" class="page-content">
+            <div class="email-monitoring">
+                <div class="monitoring-controls">
+                    <button class="btn btn-primary" id="scanNow">
+                        <i class="fas fa-sync-alt"></i> Scan Now
+                    </button>
+                    <div class="filter-group">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="safe">Safe</button>
+                        <button class="filter-btn" data-filter="suspicious">Suspicious</button>
+                        <button class="filter-btn" data-filter="dangerous">Dangerous</button>
+                    </div>
+                </div>
+
+                <div class="email-list">
+                    <div class="email-item safe">
+                        <input type="checkbox" class="email-checkbox">
+                        <div class="email-status">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="email-content">
+                            <div class="email-header">
+                                <h4>Weekly Newsletter - Tech Updates</h4>
+                                <span class="email-time">10:30 AM</span>
+                            </div>
+                            <p class="email-sender">From: newsletter@techcompany.com</p>
+                            <p class="email-preview">Your weekly digest of technology news and updates...</p>
+                        </div>
+                        <button class="btn-icon" title="View Details">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+
+                    <div class="email-item dangerous">
+                        <input type="checkbox" class="email-checkbox">
+                        <div class="email-status">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="email-content">
+                            <div class="email-header">
+                                <h4>URGENT: Verify Your Account</h4>
+                                <span class="email-time">9:45 AM</span>
+                            </div>
+                            <p class="email-sender">From: security@paypa1-secure.com</p>
+                            <p class="email-preview">Your account has been locked. Click here immediately...</p>
+                            <div class="threat-tags">
+                                <span class="tag">Phishing</span>
+                                <span class="tag">Spoofed Domain</span>
+                            </div>
+                        </div>
+                        <button class="btn-icon danger" title="View Details">
+                            <i class="fas fa-shield-alt"></i>
+                        </button>
+                    </div>
+
+                    <div class="email-item suspicious">
+                        <input type="checkbox" class="email-checkbox">
+                        <div class="email-status">
+                            <i class="fas fa-exclamation-circle"></i>
+                        </div>
+                        <div class="email-content">
+                            <div class="email-header">
+                                <h4>Package Delivery Notification</h4>
+                                <span class="email-time">Yesterday</span>
+                            </div>
+                            <p class="email-sender">From: delivery@shippingco.xyz</p>
+                            <p class="email-preview">Track your package using this link...</p>
+                            <div class="threat-tags">
+                                <span class="tag">Suspicious Link</span>
+                            </div>
+                        </div>
+                        <button class="btn-icon" title="View Details">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Threats Page -->
+        <section id="threats-page" class="page-content">
+            <div class="threats-container">
+                <div class="threats-header">
+                    <div class="threats-summary">
+                        <h2>Threat Analysis</h2>
+                        <p>Comprehensive overview of detected security threats</p>
+                    </div>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-download"></i> Export Report
+                    </button>
+                </div>
+
+                <div class="threat-categories">
+                    <div class="category-card phishing">
+                        <i class="fas fa-fishing-rod"></i>
+                        <h3>Phishing Attempts</h3>
+                        <p class="category-count">45</p>
+                        <span class="category-percentage">50.6%</span>
+                    </div>
+                    <div class="category-card malware">
+                        <i class="fas fa-virus"></i>
+                        <h3>Malware Links</h3>
+                        <p class="category-count">23</p>
+                        <span class="category-percentage">25.8%</span>
+                    </div>
+                    <div class="category-card spoofing">
+                        <i class="fas fa-user-secret"></i>
+                        <h3>Spoofed Senders</h3>
+                        <p class="category-count">15</p>
+                        <span class="category-percentage">16.9%</span>
+                    </div>
+                    <div class="category-card other">
+                        <i class="fas fa-question-circle"></i>
+                        <h3>Other Threats</h3>
+                        <p class="category-count">6</p>
+                        <span class="category-percentage">6.7%</span>
+                    </div>
+                </div>
+
+                <div class="detailed-threats">
+                    <div class="threat-detail-card">
+                        <div class="threat-detail-header">
+                            <div class="threat-severity high">HIGH RISK</div>
+                            <span class="threat-date">Dec 25, 2025 - 14:30</span>
+                        </div>
+                        <h3>Banking Credential Phishing</h3>
+                        <div class="threat-info-grid">
+                            <div class="info-item">
+                                <label>From:</label>
+                                <span>security@bank-verify-01.com</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Subject:</label>
+                                <span>Unusual Activity Detected - Action Required</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Threat Type:</label>
+                                <span>Phishing + Domain Spoofing</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Malicious Links:</label>
+                                <span>2 detected</span>
+                            </div>
+                        </div>
+                        <div class="threat-actions">
+                            <button class="btn btn-secondary">View Email</button>
+                            <button class="btn btn-danger">Delete & Block</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Honeypot Page -->
+        <section id="honeypot-page" class="page-content">
+            <div class="honeypot-container">
+                <div class="honeypot-header">
+                    <div>
+                        <h2>Honeypot Mode</h2>
+                        <p>Automated scammer engagement system</p>
+                    </div>
+                    <div class="honeypot-toggle">
+                        <label class="switch">
+                            <input type="checkbox" id="honeypotSwitch" checked>
+                            <span class="slider"></span>
+                        </label>
+                        <span class="toggle-label">Active</span>
+                    </div>
+                </div>
+
+                <div class="honeypot-stats">
+                    <div class="honeypot-stat">
+                        <i class="fas fa-comments"></i>
+                        <div>
+                            <h4>Active Conversations</h4>
+                            <p class="stat-value">4</p>
+                        </div>
+                    </div>
+                    <div class="honeypot-stat">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Total Time Wasted</h4>
+                            <p class="stat-value">127 min</p>
+                        </div>
+                    </div>
+                    <div class="honeypot-stat">
+                        <i class="fas fa-user-shield"></i>
+                        <div>
+                            <h4>Victims Protected</h4>
+                            <p class="stat-value">23</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="active-honeypots">
+                    <h3>Active Honeypot Sessions</h3>
+                    <div class="honeypot-list">
+                        <div class="honeypot-session">
+                            <div class="session-header">
+                                <div class="session-status active"></div>
+                                <h4>PayPal Phishing Scammer</h4>
+                                <span class="session-duration">45 min</span>
+                            </div>
+                            <div class="session-details">
+                                <p><strong>Scammer Email:</strong> support@paypa1-secure.org</p>
+                                <p><strong>Messages Exchanged:</strong> 12</p>
+                                <p><strong>Strategy:</strong> Playing confused user, asking for verification</p>
+                            </div>
+                            <div class="session-actions">
+                                <button class="btn btn-sm">View Conversation</button>
+                                <button class="btn btn-sm btn-danger">End Session</button>
+                            </div>
+                        </div>
+
+                        <div class="honeypot-session">
+                            <div class="session-header">
+                                <div class="session-status active"></div>
+                                <h4>Prize Winner Scam</h4>
+                                <span class="session-duration">32 min</span>
+                            </div>
+                            <div class="session-details">
+                                <p><strong>Scammer Email:</strong> prizes@lottery-winner.biz</p>
+                                <p><strong>Messages Exchanged:</strong> 8</p>
+                                <p><strong>Strategy:</strong> Requesting excessive documentation</p>
+                            </div>
+                            <div class="session-actions">
+                                <button class="btn btn-sm">View Conversation</button>
+                                <button class="btn btn-sm btn-danger">End Session</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Settings Page -->
+        <section id="settings-page" class="page-content">
+            <div class="settings-container">
+                <h2>Settings</h2>
+                
+                <div class="settings-section">
+                    <h3>Notification Preferences</h3>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4>Real-time Alerts</h4>
+                            <p>Get instant notifications for detected threats</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4>Email Notifications</h4>
+                            <p>Receive daily summary via email</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4>Sound Alerts</h4>
+                            <p>Play sound when threat is detected</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h3>Security Settings</h3>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4>Automatic Threat Blocking</h4>
+                            <p>Automatically quarantine high-risk emails</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4>Multi-layer Analysis</h4>
+                            <p>Enable deep scanning of sender, content, and links</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4>Link Scanning</h4>
+                            <p>Check all URLs for malicious content</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h3>Gmail Integration</h3>
+                    <div class="gmail-status">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Connected to: prince@gmail.com</span>
+                    </div>
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-sync-alt"></i> Reconnect Gmail
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast">
+        <i class="fas fa-shield-alt"></i>
+        <div class="toast-content">
+            <h4>New Threat Detected!</h4>
+            <p>Phishing attempt blocked from secure-banking@fakmail.com</p>
+        </div>
+        <button class="toast-close">&times;</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
